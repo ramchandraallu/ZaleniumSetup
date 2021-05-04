@@ -21,11 +21,11 @@ public class FrameworkInitialize extends Base {
         {
             case Chrome:
             {
-                System.setProperty("webdriver.chrome.driver", "/Users/karthikkk/ChromeDriver/chromedriver");
+               // System.setProperty("webdriver.chrome.driver", "/Users/karthikkk/ChromeDriver/chromedriver");
                 DesiredCapabilities capabilities= new DesiredCapabilities().chrome();
 
                 //Zelenium Configuration
-                capabilities.setCapability("recordVideo", false);
+                capabilities.setCapability("recordVideo", true);
                 capabilities.setCapability("build", "1.4.1");
                 capabilities.setCapability("idleTimeout", 150);
 
