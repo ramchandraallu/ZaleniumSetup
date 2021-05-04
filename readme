@@ -1,0 +1,77 @@
+package Mytests;
+
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class BaseTest {
+	// Declare ThreadLocal Driver (ThreadLocalMap) for ThreadSafe Tests
+	protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<RemoteWebDriver>();
+
+	@BeforeMethod
+	@Parameters(value = { "browser" })
+	public void setupTest(String browser) throws MalformedURLException {
+		// Set DesiredCapabilities
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+
+		// Set BrowserName
+		capabilities.setCapability("browserName", browser);
+		capabilities.setCapability("reecordVedio",true);
+		capabilities.setCapability("tz","Asia/kolkata");
+		capabilities.setCapability("idleTimeout",180);
+		capabilities.setCapability(CapabilityType.PLATFORM_NAME,Platform.LINUX);
+		// Set the Hub url (Docker exposed hub URL)
+		//"http://192.168.99.100:4444/wd/hub"
+		//String url="http://alluvaraprasad:autoint2021@http://35.226.24.100/wd/hub";
+		String url="http://34.67.195.168/wd/hub";
+		driver.set(new RemoteWebDriver(new URL(url), capabilities));
+	}
+
+	public WebDriver getDriver() {
+		// Get driver from ThreadLocalMap
+		return driver.get();
+	}
+  
+  
+  
+  
+  <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+	<test name="ChromeTest">
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="Mytests.FirstTest" />
+			<class name="Mytests.SecondTest" />
+		</classes>
+	</test> <!-- First Test -->
+	<test name="FirefoxTest">
+		<parameter name="browser" value="firefox" />
+		<classes>
+			<class name="Mytests.FirstTest" />
+			<class name="Mytests.SecondTest" />
+		</classes>
+	</test>  <!-- Second Test -->
+</suite> <!-- Suite -->
+
+	@AfterMethod
+	public void tearDown() throws Exception {
+		getDriver().quit();
+	}
+
+	@AfterClass
+	void terminate() {
+		// Remove the ThreadLocalMap element
+		driver.remove();
+	}
+
+}
