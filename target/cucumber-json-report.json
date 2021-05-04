@@ -1,0 +1,117 @@
+[
+  {
+    "line": 1,
+    "name": "Employee",
+    "description": "Responsible for verfiying Benefits, Create Employee,\r\nDelete employee and check if the functionality works",
+    "id": "employee",
+    "keyword": "Feature",
+    "uri": "Employee.feature"
+  },
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 4338809300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "TestInitialize.Initialize()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Check Login with correct username and password",
+        "description": "",
+        "id": "loginfeature;check-login-with-correct-username-and-password",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 13627164200,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I ensure application opened",
+            "match": {
+              "location": "LoginSteps.iEnsureApplicationOpened()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 1244769400,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I click login link",
+            "match": {
+              "location": "LoginSteps.iClickLoginLink()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1721364300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I enter UserName and Password",
+            "match": {
+              "location": "LoginSteps.iEnterUserNameAndPassword(DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "UserName",
+                  "Password"
+                ],
+                "line": 8
+              },
+              {
+                "cells": [
+                  "admin",
+                  "password"
+                ],
+                "line": 9
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 6545096500,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I click login button",
+            "match": {
+              "location": "LoginSteps.iClickLoginButton()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 1225220900,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I should see the username with hello",
+            "match": {
+              "location": "LoginSteps.iShouldSeeTheUsernameWithHello()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "LoginFeature",
+    "description": "This feature is responsible for testing all the scenarios for Login of application",
+    "id": "loginfeature",
+    "keyword": "Feature",
+    "uri": "Login.feature"
+  }
+]
