@@ -21,7 +21,7 @@ public class FrameworkInitialize extends Base {
         {
             case Chrome:
             {
-               // System.setProperty("webdriver.chrome.driver", "/Users/karthikkk/ChromeDriver/chromedriver");
+            
                 DesiredCapabilities capabilities= new DesiredCapabilities().chrome();
 
                 //Zelenium Configuration
